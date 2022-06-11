@@ -184,7 +184,6 @@ def main():
     checkpoint_callback = ModelCheckpoint(save_top_k=config.save_top_k, monitor=config.monitor,
                                           save_last=config.save_last, mode=config.monitor_mode,
                                           #dirpath=config.weights_path,
-                                          default_root_dir=config.weights_path,
                                           filename=config.weights_name)
     logger = CSVLogger('lightning_logs', name=config.log_name)
 
@@ -194,7 +193,9 @@ def main():
 
     trainer = pl.Trainer(devices=config.gpus, max_epochs=config.max_epoch, accelerator='gpu',
                          check_val_every_n_epoch=config.check_val_every_n_epoch,
-                         callbacks=[checkpoint_callback], strategy=config.strategy,
+                         #callbacks=[checkpoint_callback],
+                         default_root_dir=config.weights_path,
+                         strategy=config.strategy,
                          resume_from_checkpoint=config.resume_ckpt_path, logger=logger)
     trainer.fit(model=model)
 
