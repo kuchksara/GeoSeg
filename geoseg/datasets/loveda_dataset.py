@@ -104,12 +104,12 @@ class LoveDATrainDataset(Dataset):
         urban_img_filename_list = os.listdir(osp.join(data_root, 'Urban', img_dir))
         urban_mask_filename_list = os.listdir(osp.join(data_root, 'Urban', mask_dir))
         assert len(urban_img_filename_list) == len(urban_mask_filename_list)
-        urban_img_ids = [(str(id.split('.')[0]), 'Urban') for id in urban_img_filename_list[5]]
+        urban_img_ids = [(str(id.split('.')[0]), 'Urban') for id in urban_img_filename_list[:5]]
 
         rural_img_filename_list = os.listdir(osp.join(data_root, 'Rural', img_dir))
         rural_mask_filename_list = os.listdir(osp.join(data_root, 'Rural', mask_dir))
         assert len(rural_img_filename_list) == len(rural_mask_filename_list)
-        rural_img_ids = [(str(id.split('.')[0]), 'Rural') for id in rural_img_filename_list[5]]
+        rural_img_ids = [(str(id.split('.')[0]), 'Rural') for id in rural_img_filename_list[:5]]
         img_ids = urban_img_ids + rural_img_ids
 
         return img_ids
@@ -217,9 +217,9 @@ class LoveDATestDataset(Dataset):
 
     def get_img_ids(self, data_root, img_dir):
         urban_img_filename_list = os.listdir(osp.join(data_root, 'Urban', img_dir))
-        urban_img_ids = [(str(id.split('.')[0]), 'Urban') for id in urban_img_filename_list[5]]
+        urban_img_ids = [(str(id.split('.')[0]), 'Urban') for id in urban_img_filename_list[:5]]
         rural_img_filename_list = os.listdir(osp.join(data_root, 'Rural', img_dir))
-        rural_img_ids = [(str(id.split('.')[0]), 'Rural') for id in rural_img_filename_list[5]]
+        rural_img_ids = [(str(id.split('.')[0]), 'Rural') for id in rural_img_filename_list[:5]]
         img_ids = urban_img_ids + rural_img_ids
 
         return img_ids
