@@ -183,7 +183,8 @@ def main():
     seed_everything(42)
     checkpoint_callback = ModelCheckpoint(save_top_k=config.save_top_k, monitor=config.monitor,
                                           save_last=config.save_last, mode=config.monitor_mode,
-                                          dirpath=config.weights_path,
+                                          #dirpath=config.weights_path,
+                                          default_root_dir=config.weights_path,
                                           filename=config.weights_name)
     logger = CSVLogger('lightning_logs', name=config.log_name)
 
