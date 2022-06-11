@@ -30,8 +30,8 @@ def seed_everything(seed):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mask-dir", default=os.environ.get("base_data_path", "") + "data/LoveDA/Train/Rural/masks_png")
-    parser.add_argument("--output-mask-dir", default=os.environ.get("base_data_path", "") + "data/LoveDA/Train/Rural/masks_png_convert")
+    parser.add_argument("--mask-dir", default=os.environ.get("base_data_path", "/kaggle/input/loveda-makan/data/") + "data/LoveDA/Train/Rural/masks_png")
+    parser.add_argument("--output-mask-dir", default=os.environ.get("base_data_path", "/kaggle/input/loveda-makan/data/") + "data/LoveDA/Train/Rural/masks_png_convert")
     return parser.parse_args()
 
 
