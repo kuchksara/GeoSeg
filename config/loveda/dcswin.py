@@ -29,8 +29,8 @@ save_last = True  # save the last model weight
 check_val_every_n_epoch = 1  # run validation every n epoch
 gpus = [0]  # gpu ids, more setting can refer to pytorch_lightning
 strategy = None  # 'dp', 'ddp', multi-gpu training can refer to pytorch_lightning
-pretrained_ckpt_path = None  # more setting can refer to pytorch_lightning
-resume_ckpt_path = None  # more setting can refer to pytorch_lightning
+pretrained_ckpt_path = "/kaggle/working/pretrain_weights"  # more setting can refer to pytorch_lightning
+resume_ckpt_path = "/kaggle/working/pretrain_weights"  # more setting can refer to pytorch_lightning
 
 #  define the network
 net = dcswin_small(num_classes=num_classes)
