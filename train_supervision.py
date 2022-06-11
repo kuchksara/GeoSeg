@@ -199,7 +199,7 @@ def main():
                         #  resume_from_checkpoint=config.resume_ckpt_path,
                           logger=logger)
     trainer.fit(model=model)
-    trainer.save_checkpoint("example.ckpt")
+    trainer.save_checkpoint("small_weights.ckpt")
 
 
 if __name__ == "__main__":
