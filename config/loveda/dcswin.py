@@ -43,7 +43,7 @@ use_aux_loss = False
 
 # define the dataloader
 
-train_dataset = LoveDATrainDataset(transform=train_aug, data_root='data/LoveDA/Train')
+train_dataset = LoveDATrainDataset(transform=train_aug, data_root=os.environ.get("base_data_path", "") + 'data/LoveDA/Train')
 
 val_dataset = loveda_val_dataset
 
