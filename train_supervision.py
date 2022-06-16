@@ -180,6 +180,7 @@ class Supervision_Train(pl.LightningModule):
 def main():
     args = get_args()
     config = py2cfg(args.config_path)
+    print(config)
     seed_everything(42)
     checkpoint_callback = ModelCheckpoint(save_top_k=config.save_top_k, monitor=config.monitor,
                                           save_last=config.save_last, mode=config.monitor_mode,

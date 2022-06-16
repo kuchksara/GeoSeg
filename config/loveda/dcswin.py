@@ -1,11 +1,13 @@
+from base_config import *
+from typing_extensions import runtime
 from torch.utils.data import DataLoader
 from geoseg.losses import *
 from geoseg.datasets.loveda_dataset import *
 from geoseg.models.DCSwin import dcswin_small
 from catalyst.contrib.nn import Lookahead
 from catalyst import utils
-
 # training hparam
+
 max_epoch = 30
 ignore_index = len(CLASSES)
 train_batch_size = 8
@@ -19,7 +21,9 @@ num_classes = len(CLASSES)
 classes = CLASSES
 
 weights_name = "dcswin-small-512crop-ms-epoch30"
-weights_path = "/kaggle/working/" + "model_weights/loveda/{}".format(weights_name)  # do not change
+
+weight_path = base_path + "model_weights/loveda/{}".format(weights_name)  # do not change
+
 test_weights_name = "dcswin-small-512crop-ms-epoch30"  # if save_top_k=3, there are v1,v2 model weights
 log_name = 'loveda/{}'.format(weights_name)  # do not change
 monitor = 'val_mIoU'  # such as val_F1, val_OA
@@ -43,7 +47,7 @@ use_aux_loss = False
 
 # define the dataloader
 
-train_dataset = LoveDATrainDataset(transform=train_aug, data_root=os.environ.get("base_data_path", "/kaggle/input/loveda-makan/data/") + 'data/LoveDA/Train')
+train_dataset = LoveDATrainDataset(transform=train_aug, data_root=data_root + 'data/LoveDA/Train')
 
 val_dataset = loveda_val_dataset
 
