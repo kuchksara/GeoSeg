@@ -22,7 +22,7 @@ classes = CLASSES
 
 weights_name = "dcswin-small-512crop-ms-epoch30"
 
-weight_path = base_path + "model_weights/loveda/{}".format(weights_name)  # do not change
+weights_path = base_path + "model_weights/loveda/"#.format(weights_name)  # do not change
 
 test_weights_name = "dcswin-small-512crop-ms-epoch30"  # if save_top_k=3, there are v1,v2 model weights
 log_name = 'loveda/{}'.format(weights_name)  # do not change
