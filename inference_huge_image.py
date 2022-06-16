@@ -179,7 +179,7 @@ def main():
     for ext in ('*.tif', '*.png', '*.jpg'):
         img_paths.extend(glob.glob(os.path.join(args.image_path, ext)))
     img_paths.sort()
-    # print(img_paths)
+    print(img_paths)
     for img_path in img_paths:
         img_name = img_path.split('/')[-1]
         # print('origin mask', original_mask.shape)
