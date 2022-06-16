@@ -151,7 +151,7 @@ def main():
 
     model.cuda()
     model.eval()
-
+    print('model loads successfully')
     if args.tta == "lr":
         transforms = tta.Compose(
             [
@@ -160,6 +160,7 @@ def main():
             ]
         )
         model = tta.SegmentationTTAWrapper(model, transforms)
+
     elif args.tta == "d4":
         transforms = tta.Compose(
             [
