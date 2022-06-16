@@ -227,7 +227,7 @@ def main():
         # else:
         #     output_mask = output_mask
 
-        # print('mask', output_mask.shape)
+        print('mask', output_mask.shape)
         if args.dataset == 'landcoverai':
             output_mask = landcoverai_to_rgb(output_mask)
         elif args.dataset == 'pv':
