@@ -1,3 +1,4 @@
+from base_config import *
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -914,7 +915,7 @@ class DCSwin(nn.Module):
         return x
 
 
-def dcswin_base(pretrained=True, num_classes=4, weight_path='pretrain_weights/stseg_base.pth'):
+def dcswin_base(pretrained=True, num_classes=4, weight_path=base_path + 'pretrain_weights/stseg_base.pth'):
     # pretrained weights are load from official repo of Swin Transformer
     model = DCSwin(encoder_channels=(128, 256, 512, 1024),
                    num_classes=num_classes,
@@ -931,7 +932,7 @@ def dcswin_base(pretrained=True, num_classes=4, weight_path='pretrain_weights/st
     return model
 
 
-def dcswin_small(pretrained=True, num_classes=4, weight_path='pretrain_weights/stseg_small.pth'):
+def dcswin_small(pretrained=True, num_classes=4, weight_path=base_path + 'pretrain_weights/stseg_small.pth'):
     model = DCSwin(encoder_channels=(96, 192, 384, 768),
                    num_classes=num_classes,
                    embed_dim=96,
@@ -947,7 +948,7 @@ def dcswin_small(pretrained=True, num_classes=4, weight_path='pretrain_weights/s
     return model
 
 
-def dcswin_tiny(pretrained=True, num_classes=4, weight_path='pretrain_weights/stseg_tiny.pth'):
+def dcswin_tiny(pretrained=True, num_classes=4, weight_path=base_path + 'pretrain_weights/stseg_tiny.pth'):
     model = DCSwin(encoder_channels=(96, 192, 384, 768),
                    num_classes=num_classes,
                    embed_dim=96,
