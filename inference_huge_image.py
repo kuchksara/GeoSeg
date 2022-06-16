@@ -241,6 +241,8 @@ def main():
             output_mask = output_mask
         # print(img_shape, output_mask.shape)
         # assert img_shape == output_mask.shape
+        print('output_path: {}'.format(args.output_path))
+        print(output_mask)
         cv2.imwrite(os.path.join(args.output_path, img_name), output_mask)
 
 
