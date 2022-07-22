@@ -1,3 +1,4 @@
 {
-    "environment": "kaggle"
+    "environment": "kaggle",
+    "dataset": "vaihingen"
 }
