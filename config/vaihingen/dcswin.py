@@ -74,13 +74,13 @@ def val_aug(img, mask):
     return img, mask
 
 
-train_dataset = VaihingenDataset(data_root='data/vaihingen/train', mode='train',
+train_dataset = VaihingenDataset(data_root='vaihingen/train', mode='train',
                                  img_dir='images_1024', mask_dir='masks_1024', img_size=(1024, 1024),
                                  mosaic_ratio=0.25, transform=train_aug)
 
-val_dataset = VaihingenDataset(data_root='data/vaihingen/val', img_dir='images_1024', mask_dir='masks_1024', img_size=(1024, 1024),
+val_dataset = VaihingenDataset(data_root='vaihingen/val', img_dir='images_1024', mask_dir='masks_1024', img_size=(1024, 1024),
                                transform=val_aug)
-test_dataset = VaihingenDataset(data_root='data/vaihingen/test', img_dir='images_1024', mask_dir='masks_1024', img_size=(1024, 1024),
+test_dataset = VaihingenDataset(data_root='vaihingen/test', img_dir='images_1024', mask_dir='masks_1024', img_size=(1024, 1024),
                                 transform=val_aug)
 
 train_loader = DataLoader(dataset=train_dataset,
