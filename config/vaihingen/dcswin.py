@@ -74,30 +74,30 @@ def val_aug(img, mask):
     img, mask = aug['image'], aug['mask']
     return img, mask
 
+#comment for inference
+# train_dataset = VaihingenDataset(data_root=data_root + 'vaihingen/train', mode='train',
+#                                  img_dir='images_1024', mask_dir='masks_1024', img_size=(1024, 1024),
+#                                  mosaic_ratio=0.25, transform=train_aug)
 
-train_dataset = VaihingenDataset(data_root=data_root + 'vaihingen/train', mode='train',
-                                 img_dir='images_1024', mask_dir='masks_1024', img_size=(1024, 1024),
-                                 mosaic_ratio=0.25, transform=train_aug)
+# val_dataset = VaihingenDataset(data_root=data_root + 'vaihingen/val', img_dir='images_1024', mask_dir='masks_1024', img_size=(1024, 1024),
+#                                transform=val_aug)
+# test_dataset = VaihingenDataset(data_root=data_root + 'vaihingen/test', img_dir='images_1024', mask_dir='masks_1024', img_size=(1024, 1024),
+#                                 transform=val_aug)
 
-val_dataset = VaihingenDataset(data_root=data_root + 'vaihingen/val', img_dir='images_1024', mask_dir='masks_1024', img_size=(1024, 1024),
-                               transform=val_aug)
-test_dataset = VaihingenDataset(data_root=data_root + 'vaihingen/test', img_dir='images_1024', mask_dir='masks_1024', img_size=(1024, 1024),
-                                transform=val_aug)
+# train_loader = DataLoader(dataset=train_dataset,
+#                           batch_size=train_batch_size,
+#                           num_workers=4,
+#                           pin_memory=True,
+#                           shuffle=True,
+#                           drop_last=True)
 
-train_loader = DataLoader(dataset=train_dataset,
-                          batch_size=train_batch_size,
-                          num_workers=4,
-                          pin_memory=True,
-                          shuffle=True,
-                          drop_last=True)
-
-val_loader = DataLoader(dataset=val_dataset,
-                        batch_size=val_batch_size,
-                        num_workers=4,
-                        shuffle=False,
-                        pin_memory=True,
-                        drop_last=False)
-
+# val_loader = DataLoader(dataset=val_dataset,
+#                         batch_size=val_batch_size,
+#                         num_workers=4,
+#                         shuffle=False,
+#                         pin_memory=True,
+#                         drop_last=False)
+##############end of comment for inference#############
 # define the optimizer
 layerwise_params = {"backbone.*": dict(lr=backbone_lr, weight_decay=backbone_weight_decay)}
 net_params = utils.process_model_params(net, layerwise_params=layerwise_params)
