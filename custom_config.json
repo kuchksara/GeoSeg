@@ -1,4 +1,4 @@
 {
-    "environment": "colab",
+    "environment": "kaggle",
     "dataset": "vaihingen"
 }
