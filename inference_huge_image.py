@@ -1,5 +1,6 @@
 import argparse
 from pathlib import Path
+import time
 import glob
 from PIL import Image
 import ttach as tta
@@ -126,7 +127,7 @@ class InferenceDataset(Dataset):
 
 
 def make_dataset_for_one_huge_image(img_path, patch_size):
-    img = cv2.imread(img_path, cv2.IMREAD_COLOR)
+    img = cv2.imread(img_path, cv2.IMREAD_COLOR)[:1024, :1024, :]
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     tile_list = []
     image_pad, height_pad, width_pad = get_img_padded(img.copy(), patch_size)
@@ -179,7 +180,6 @@ def main():
     for ext in ('*.tif', '*.png', '*.jpg'):
         img_paths.extend(glob.glob(os.path.join(args.image_path, ext)))
     img_paths.sort()
-    print(img_paths)
     for img_path in img_paths:
         img_name = img_path.split('/')[-1]
         # print('origin mask', original_mask.shape)
@@ -189,16 +189,18 @@ def main():
         output_mask = np.zeros(shape=(output_height, output_width), dtype=np.uint8)
         output_tiles = []
         k = 0
+        t1 = time.time()
         with torch.no_grad():
             dataloader = DataLoader(dataset=dataset, batch_size=args.batch_size,
                                     drop_last=False, shuffle=False)
             for input in tqdm(dataloader):
+                tn1 = time.time()
                 # raw_prediction NxCxHxW
                 if config.runtime == 'gpu':
                     raw_predictions = model(input['img'].cuda())
                 else:
                     raw_predictions = model(input['img'])
-
+                print(f"time is : {time.time() - tn1}")
                 # print('raw_pred shape:', raw_predictions.shape)
                 raw_predictions = nn.Softmax(dim=1)(raw_predictions)
                 # input_images['features'] NxCxHxW C=3
@@ -210,7 +212,7 @@ def main():
                 for i in range(predictions.shape[0]):
                     mask = predictions[i].cpu().numpy()
                     output_tiles.append((mask, image_ids[i].cpu().numpy()))
-
+        print(f"inference time is: {time.time() - t1}")
         for m in range(0, output_height, patch_size[0]):
             for n in range(0, output_width, patch_size[1]):
                 output_mask[m:m + patch_size[0], n:n + patch_size[1]] = output_tiles[k][0]
