@@ -200,7 +200,7 @@ def main():
                     raw_predictions = model(input['img'].cuda())
                 else:
                     raw_predictions = model(input['img'])
-                print(f"time is : {time.time() - tn1}")
+                print(f"time is: {time.time() - tn1}")
                 # print('raw_pred shape:', raw_predictions.shape)
                 raw_predictions = nn.Softmax(dim=1)(raw_predictions)
                 # input_images['features'] NxCxHxW C=3
