@@ -189,10 +189,10 @@ def main():
         output_mask = np.zeros(shape=(output_height, output_width), dtype=np.uint8)
         output_tiles = []
         k = 0
-        t1 = time.time()
         with torch.no_grad():
             dataloader = DataLoader(dataset=dataset, batch_size=args.batch_size,
                                     drop_last=False, shuffle=False)
+            t1 = time.time()
             for input in tqdm(dataloader):
                 tn1 = time.time()
                 # raw_prediction NxCxHxW
