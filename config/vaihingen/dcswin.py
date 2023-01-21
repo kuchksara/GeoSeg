@@ -1,4 +1,4 @@
-import base_config
+from base_config import *
 from torch.utils.data import DataLoader
 from geoseg.losses import *
 from geoseg.datasets.vaihingen_dataset import *
@@ -21,7 +21,7 @@ num_classes = len(CLASSES)
 classes = CLASSES
 
 weights_name = "dcswin-small-1024-ms-512crop-e70"
-weights_path = base_config.base_path + "model_weights/vaihingen/{}".format(weights_name)
+weights_path = base_path + "model_weights/vaihingen/{}".format(weights_name)
 test_weights_name = "dcswin-small-1024-ms-512crop-e70"
 log_name = 'vaihingen/{}'.format(weights_name)
 monitor = 'val_F1'
