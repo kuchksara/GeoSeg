@@ -81,8 +81,8 @@ def val_aug(img, mask):
 
 # val_dataset = VaihingenDataset(data_root=data_root + 'vaihingen/val', img_dir='images_1024', mask_dir='masks_1024', img_size=(1024, 1024),
 #                                transform=val_aug)
-test_dataset = VaihingenDataset(data_root=data_root + 'vaihingen/test', img_dir='images_1024', mask_dir='masks_1024', img_size=(1024, 1024),
-                                transform=val_aug)
+#test_dataset = VaihingenDataset(data_root=data_root + 'vaihingen/test', img_dir='images_1024', mask_dir='masks_1024', img_size=(1024, 1024),
+#                                transform=val_aug)
 
 # train_loader = DataLoader(dataset=train_dataset,
 #                           batch_size=train_batch_size,
